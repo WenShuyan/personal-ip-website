@@ -363,27 +363,31 @@
       <p class="font-heading text-base uppercase tracking-widest text-accent-2">Who I Am</p>
     </div>
 
-    <!-- Placeholder card -->
+    <!-- About card -->
     <div class="bg-max-muted/70 backdrop-blur-sm border-4 border-dashed border-accent-2 rounded-3xl shadow-hard-3 p-10 md:p-14">
-      <div class="flex flex-col md:flex-row gap-8 items-start">
-        <!-- Avatar placeholder -->
-        <div class="shrink-0 w-24 h-24 rounded-full border-4 border-solid border-accent-3 bg-accent-2/10 flex items-center justify-center shadow-glow">
-          <i data-lucide="user" class="w-12 h-12 text-accent-2"></i>
+      <!-- Avatar + Name row -->
+      <div class="flex items-center gap-6 mb-8 flex-wrap">
+        <div class="shrink-0 w-24 h-24 rounded-full border-4 border-solid border-accent-3 overflow-hidden shadow-glow">
+          <img src="avatar.jpg" alt="头像" class="w-full h-full object-cover">
         </div>
-        <div class="flex-1 space-y-4">
-          <p class="font-body text-lg text-white/50 leading-relaxed">
-            内容待补充 — 这里会有一段关于你的故事。
-          </p>
-          <p class="font-body text-lg text-white/50 leading-relaxed">
-            你为什么学计算机？为什么选这个方向？你在想什么？
-          </p>
-          <p class="font-body text-lg text-white/50 leading-relaxed">
-            不写简历式的技能列表，只说你想说的。准备好了随时替换这里。
-          </p>
-          <div class="flex items-center gap-2 mt-4 pt-4 border-t-2 border-dashed border-accent-2/30">
-            <i data-lucide="map-pin" class="w-5 h-5 text-accent-2"></i>
-            <span class="font-heading font-bold text-accent-2 text-sm uppercase tracking-widest">杭州 · 浙江财经大学</span>
-          </div>
+        <h3 class="font-display text-[clamp(2.5rem,5vw,4rem)] leading-none text-white ts-triple">
+          温书岩
+        </h3>
+      </div>
+      <!-- Content -->
+      <div class="space-y-4">
+        <p class="font-body text-lg text-white leading-relaxed">
+          选择计算机不是因为热门，而是因为天然迷恋「让机器自己做决定」这件事。从第一次接触代码开始，我就更关心一个程序能做什么。
+        </p>
+        <p class="font-body text-lg text-white leading-relaxed">
+          我确信 AI 不只是工具，它会重新定义整个创作流程。现在在做 OPC 极简短剧 Agent——一个用 AI 贯穿短剧制作全流程的项目：从选题到分镜，从剧本到成片，让一个人也能做出完整的作品。
+        </p>
+        <p class="font-body text-lg text-white leading-relaxed">
+          用 Agent 替代传统团队的多角色协作，把流程压到极致。如果你也在折腾类似的事情，欢迎来聊。
+        </p>
+        <div class="flex items-center gap-2 mt-4 pt-4 border-t-2 border-dashed border-accent-2/30">
+          <i data-lucide="map-pin" class="w-5 h-5 text-accent-2"></i>
+          <span class="font-heading font-bold text-accent-2 text-sm uppercase tracking-widest">杭州 · 浙江财经大学</span>
         </div>
       </div>
     </div>
@@ -412,23 +416,30 @@
       <p class="font-heading text-base uppercase tracking-widest text-accent-3">What I'm Building</p>
     </div>
 
-    <!-- Placeholder card with rotation -->
+    <!-- Work card -->
     <div class="bg-max-muted/70 backdrop-blur-sm border-4 border-solid border-accent-3 rounded-3xl shadow-hard-1 p-10 md:p-14 rotate-1 hover:rotate-2 transition-transform duration-300">
       <div class="flex items-start gap-4 mb-6">
         <div class="w-14 h-14 rounded-full border-4 border-dashed border-accent-4 bg-accent-3/10 flex items-center justify-center shadow-glow">
           <i data-lucide="sparkles" class="w-7 h-7 text-accent-3"></i>
         </div>
         <div>
-          <h3 class="font-heading font-black text-2xl text-white ts-single mb-1">当前专注</h3>
+          <h3 class="font-heading font-black text-2xl text-white ts-single mb-1">OPC 极简短剧 Agent</h3>
           <p class="font-body text-accent-3/60 text-sm uppercase tracking-widest">CURRENT FOCUS</p>
         </div>
       </div>
-      <p class="font-body text-lg text-white/50 leading-relaxed">
-        内容待补充 — 这里会写你当前在做什么、想解决什么问题。
+      <p class="font-body text-lg text-white leading-relaxed">
+        短剧行业过去靠一个团队（编剧、导演、摄影、剪辑）撑起一条内容线。我想做一件事：让一个人就能完成全流程。
       </p>
-      <p class="font-body text-lg text-white/50 leading-relaxed mt-3">
-        不是项目列表，而是 "我在探索什么"。
+      <p class="font-body text-lg text-white leading-relaxed mt-3">
+        OPC 极简短剧 Agent 的核心思路是——用 AI 取代传统多角色协作。从选题灵感、剧本生成、分镜设计到剪辑输出，全部交给 Agent 驱动。人只需要做决策，不做执行。
       </p>
+      <p class="font-body text-lg text-white leading-relaxed mt-3">
+        不是让流程更复杂，而是让流程更短。目标是让一个创作者在手机上就能走完一条短剧的生产线。
+      </p>
+      <div class="flex items-center gap-2 mt-4 pt-4 border-t-2 border-dashed border-accent-3/30">
+        <i data-lucide="layers" class="w-5 h-5 text-accent-3"></i>
+        <span class="font-heading font-bold text-accent-3 text-sm uppercase tracking-widest">选题 → 剧本 → 分镜 → 成片</span>
+      </div>
     </div>
   </div>
 
@@ -491,22 +502,6 @@
     </p>
   </div>
 </footer>
-
-<!-- ============================================================ -->
-<!--  DECORATIVE: Floating corner shapes                           -->
-<!-- ============================================================ -->
-<!-- Bottom left -->
-<div class="fixed bottom-6 left-6 z-30 pointer-events-none opacity-30">
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-    <rect x="2" y="2" width="36" height="36" rx="8" stroke="#FF3AF2" stroke-width="4" stroke-dasharray="6 4"/>
-  </svg>
-</div>
-<!-- Top right -->
-<div class="fixed top-20 right-6 z-30 pointer-events-none opacity-30">
-  <svg width="30" height="30" viewBox="0 0 30 30">
-    <circle cx="15" cy="15" r="13" fill="none" stroke="#00F5D4" stroke-width="4"/>
-  </svg>
-</div>
 
 <!-- Lucide Icons Init + Reveal Logic -->
 <script>
