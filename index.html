@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项秀泰 — 我是帅哥</title>
+
+  <!-- Google Fonts: Outfit, DM Sans, Bangers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Bangers&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'max-bg':      '#0D0D1A',
+            'max-muted':   '#2D1B4E',
+            'accent-1':    '#FF3AF2',
+            'accent-2':    '#00F5D4',
+            'accent-3':    '#FFE600',
+            'accent-4':    '#FF6B35',
+            'accent-5':    '#7B2FFF',
+          },
+          fontFamily: {
+            'heading':  ['Outfit', 'sans-serif'],
+            'body':     ['DM Sans', 'sans-serif'],
+            'display':  ['Bangers', 'cursive'],
+          },
+          animation: {
+            'float':        'float 6s ease-in-out infinite',
+            'float-rev':    'float-rev 5s ease-in-out infinite',
+            'float-slow':   'float 8s ease-in-out infinite',
+            'pulse-glow':   'pulse-glow 2s ease-in-out infinite',
+            'gradient':     'gradient 4s ease infinite',
+            'spin-slow':    'spin 20s linear infinite',
+            'wiggle':       'wiggle 1s ease-in-out infinite',
+            'bounce-s':     'bounce-s 2s ease-in-out infinite',
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ============ CSS KEYFRAMES ============ */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(-20px) rotate(5deg); }
+    }
+    @keyframes float-rev {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(20px) rotate(-5deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,58,242,0.5), 0 0 40px rgba(0,245,212,0.3); }
+      50%      { box-shadow: 0 0 40px rgba(255,58,242,0.8), 0 0 60px rgba(0,245,212,0.5), 0 0 80px rgba(255,230,0,0.3); }
+    }
+    @keyframes gradient {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50%      { transform: rotate(3deg); }
+    }
+    @keyframes bounce-s {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    /* ============ GLOBAL TEXTURES ============ */
+    body {
+      background-color: #0D0D1A;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      /* Layer 1: Dot grid */
+      background-image:
+        radial-gradient(circle, rgba(255,58,242,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      /* Layer 2: Diagonal stripes */
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 12px,
+        rgba(0,245,212,0.04) 12px,
+        rgba(0,245,212,0.04) 24px
+      );
+      mix-blend-mode: screen;
+    }
+
+    /* ============ TEXT SHADOW SYSTEM ============ */
+    .ts-single  { text-shadow: 2px 2px 0px #7B2FFF; }
+    .ts-double  { text-shadow: 2px 2px 0px #7B2FFF, 4px 4px 0px #FF3AF2; }
+    .ts-triple  { text-shadow: 2px 2px 0px #7B2FFF, 4px 4px 0px #FF3AF2, 6px 6px 0px #00F5D4; }
+    .ts-mega    { text-shadow: 3px 3px 0px #7B2FFF, 6px 6px 0px #FF3AF2, 9px 9px 0px #00F5D4, 12px 12px 0px #FFE600; }
+    .ts-hero    { text-shadow: 4px 4px 0px #7B2FFF, 8px 8px 0px #FF3AF2, 12px 12px 0px #00F5D4, 16px 16px 0px #FFE600, 20px 20px 0px #FF6B35; }
+
+    /* ============ SHADOW SYSTEM ============ */
+    .shadow-glow { box-shadow: 0 0 20px rgba(255,58,242,0.5), 0 0 40px rgba(0,245,212,0.3); }
+    .shadow-glow-lg { box-shadow: 0 0 40px rgba(255,58,242,0.6), 0 0 80px rgba(255,230,0,0.4), 0 0 120px rgba(123,47,255,0.3); }
+    .shadow-hard-1 { box-shadow: 8px 8px 0 #FFE600, 16px 16px 0 #FF3AF2; }
+    .shadow-hard-2 { box-shadow: 12px 12px 0 #00F5D4, 24px 24px 0 #FF3AF2, 36px 36px 0 #FFE600; }
+    .shadow-hard-3 { box-shadow: 8px 8px 0 #7B2FFF, 16px 16px 0 #FF3AF2; }
+    .shadow-combo { box-shadow: 0 0 30px rgba(255,58,242,0.6), 8px 8px 0 #FFE600, 16px 16px 0 #FF3AF2; }
+
+    /* ============ GRADIENT TEXT ============ */
+    .text-gradient {
+      background: linear-gradient(90deg, #FF3AF2, #00F5D4, #FFE600, #FF3AF2);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 4s ease infinite;
+    }
+    .text-gradient-cyan {
+      background: linear-gradient(90deg, #00F5D4, #7B2FFF, #00F5D4);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 4s ease infinite;
+    }
+    .text-gradient-yellow {
+      background: linear-gradient(90deg, #FFE600, #FF6B35, #FFE600);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 4s ease infinite;
+    }
+
+    /* ============ SECTION TEXTURES ============ */
+    .section-mesh-magenta {
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(255,58,242,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(123,47,255,0.08) 0%, transparent 50%);
+      position: relative;
+    }
+    .section-stripes-cyan::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        -30deg,
+        transparent,
+        transparent 15px,
+        rgba(0,245,212,0.05) 15px,
+        rgba(0,245,212,0.05) 30px
+      );
+    }
+    .section-checker-yellow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: conic-gradient(
+        from 90deg at 1px 1px,
+        transparent 90deg,
+        rgba(255,230,0,0.04) 0
+      );
+      background-size: 40px 40px;
+    }
+    .section-mesh-purple {
+      background:
+        radial-gradient(ellipse at 80% 30%, rgba(123,47,255,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 70%, rgba(255,58,242,0.08) 0%, transparent 50%);
+    }
+
+    /* ============ FLOATING DECORATION ============ */
+    .deco-star {
+      position: absolute;
+      pointer-events: none;
+      z-index: 5;
+    }
+    /* SVG icon fills */
+    .fill-accent-1 { fill: #FF3AF2; }
+    .fill-accent-2 { fill: #00F5D4; }
+    .fill-accent-3 { fill: #FFE600; }
+    .fill-accent-4 { fill: #FF6B35; }
+    .fill-accent-5 { fill: #7B2FFF; }
+    .stroke-accent-1 { stroke: #FF3AF2; }
+    .stroke-accent-2 { stroke: #00F5D4; }
+    .stroke-accent-3 { stroke: #FFE600; }
+    .stroke-accent-4 { stroke: #FF6B35; }
+    .stroke-accent-5 { stroke: #7B2FFF; }
+
+    /* ============ BACKGROUND MEGA TEXT ============ */
+    .bg-mega-text {
+      position: absolute;
+      font-family: 'Bangers', cursive;
+      font-size: clamp(8rem, 25vw, 18rem);
+      opacity: 0.06;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 2;
+      color: #FF3AF2;
+    }
+
+    /* ============ CARD HOVER ============ */
+    .card-hover {
+      transition: all 300ms ease-out;
+    }
+    .card-hover:hover {
+      transform: scale(1.03) rotate(1deg);
+    }
+
+    /* ============ SCROLLBAR ============ */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1A0A2E; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #FF3AF2, #7B2FFF);
+      border-radius: 9999px;
+    }
+
+    /* ============ REDUCED MOTION ============ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.15s !important;
+      }
+    }
+
+    /* ============ HIDDEN SECTIONS ============ */
+    .hidden-section {
+      display: none !important;
+    }
+    .show-section {
+      display: block !important;
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="font-body text-white antialiased">
+
+<!-- ============================================================ -->
+<!--  NAVIGATION                                                   -->
+<!-- ============================================================ -->
+<nav class="fixed top-0 w-full z-50 bg-max-bg/80 backdrop-blur-md border-b-4 border-accent-1">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#hero" class="font-display text-2xl text-gradient hover:scale-110 transition-transform duration-300">
+      X.X.T
+    </a>
+    <div class="flex gap-6 font-heading font-bold text-sm uppercase tracking-widest">
+      <a href="#about" class="text-accent-2 hover:text-accent-3 transition-colors duration-200 hover:scale-110 inline-block">关于</a>
+      <a href="#work" class="text-accent-3 hover:text-accent-4 transition-colors duration-200 hover:scale-110 inline-block">在做</a>
+      <a href="#contact" class="text-accent-4 hover:text-accent-1 transition-colors duration-200 hover:scale-110 inline-block">联系</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!--  HERO SECTION  |  ACCENT: MAGENTA                             -->
+<!-- ============================================================ -->
+<section id="hero" class="section-mesh-magenta relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <!-- Background mega text -->
+  <span class="bg-mega-text absolute -top-10 left-1/2 -translate-x-1/2 select-none">COOL</span>
+
+  <!-- Floating decorations -->
+  <!-- Stars -->
+  <svg class="deco-star top-[12%] left-[8%] w-10 h-10 animate-float" viewBox="0 0 24 24" fill="#FF3AF2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <svg class="deco-star top-[25%] right-[10%] w-8 h-8 animate-float-rev" viewBox="0 0 24 24" fill="#00F5D4"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <svg class="deco-star top-[60%] left-[5%] w-6 h-6 animate-float-slow" viewBox="0 0 24 24" fill="#FFE600"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <svg class="deco-star top-[70%] right-[5%] w-12 h-12 animate-float" viewBox="0 0 24 24" fill="#FF6B35"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <svg class="deco-star bottom-[15%] left-[20%] w-7 h-7 animate-wiggle" viewBox="0 0 24 24" fill="#7B2FFF"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+
+  <!-- Emoji -->
+  <span class="deco-star top-[15%] right-[20%] text-5xl animate-float select-none">✨</span>
+  <span class="deco-star bottom-[20%] left-[25%] text-6xl animate-bounce-s select-none">💫</span>
+  <span class="deco-star top-[40%] right-[15%] text-4xl animate-wiggle select-none">🚀</span>
+
+  <!-- Circular floating ring -->
+  <div class="deco-star top-[8%] right-[25%] w-20 h-20 rounded-full border-4 border-dashed border-accent-2 animate-spin-slow opacity-40"></div>
+  <div class="deco-star bottom-[10%] right-[30%] w-16 h-16 rounded-full border-4 border-dashed border-accent-3 animate-spin-slow opacity-30" style="animation-duration: 25s; animation-direction: reverse;"></div>
+
+  <!-- Center content -->
+  <div class="relative z-10 text-center px-6 max-w-5xl">
+    <!-- Tiny label -->
+    <p class="font-heading text-xs uppercase tracking-[0.3em] text-accent-2 mb-6 opacity-80">Welcome to the universe of</p>
+
+    <!-- Main title -->
+    <h1 class="font-display text-[clamp(4rem,12vw,9rem)] leading-[0.9] text-white ts-hero mb-8 select-none">
+      我是帅哥
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="font-body text-xl md:text-2xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+      不解释，不低调。视觉即态度。
+    </p>
+
+    <!-- CTA -->
+    <button id="reveal-btn" class="inline-flex items-center gap-3
+      bg-gradient-to-r from-[#FF3AF2] via-[#7B2FFF] to-[#00F5D4] bg-[length:200%_100%]
+      border-4 border-[#FFE600]
+      rounded-full
+      shadow-combo
+      text-white font-heading font-black uppercase tracking-widest text-sm
+      h-16 px-12
+      hover:scale-110 hover:shadow-glow-lg
+      active:scale-95
+      transition-all duration-300 animate-pulse-glow
+      cursor-pointer">
+      <i data-lucide="zap" class="w-5 h-5"></i>
+      来，认识我
+      <i data-lucide="arrow-right" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0D0D1A] to-transparent z-10"></div>
+</section>
+
+<!-- ============================================================ -->
+<!--  ABOUT SECTION  |  ACCENT: CYAN                               -->
+<!-- ============================================================ -->
+<section id="about" class="hidden-section section-stripes-cyan relative py-32 overflow-hidden">
+  <!-- Background pattern layer -->
+  <div class="absolute inset-0 pointer-events-none" style="background-image: conic-gradient(from 90deg at 1px 1px, transparent 90deg, rgba(0,245,212,0.03) 0); background-size: 50px 50px;"></div>
+
+  <!-- Floating decorations -->
+  <svg class="deco-star top-[8%] right-[10%] w-10 h-10 animate-float" viewBox="0 0 24 24" fill="#00F5D4"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <span class="deco-star bottom-[15%] left-[8%] text-5xl animate-float-rev select-none">💬</span>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <!-- Section heading -->
+    <div class="text-center mb-16">
+      <h2 class="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-none text-white ts-triple mb-4">
+        关于我
+      </h2>
+      <p class="font-heading text-base uppercase tracking-widest text-accent-2">Who I Am</p>
+    </div>
+
+    <!-- Placeholder card -->
+    <div class="bg-max-muted/70 backdrop-blur-sm border-4 border-dashed border-accent-2 rounded-3xl shadow-hard-3 p-10 md:p-14">
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        <!-- Avatar placeholder -->
+        <div class="shrink-0 w-24 h-24 rounded-full border-4 border-solid border-accent-3 bg-accent-2/10 flex items-center justify-center shadow-glow">
+          <i data-lucide="user" class="w-12 h-12 text-accent-2"></i>
+        </div>
+        <div class="flex-1 space-y-4">
+          <p class="font-body text-lg text-white/50 leading-relaxed">
+            内容待补充 — 这里会有一段关于你的故事。
+          </p>
+          <p class="font-body text-lg text-white/50 leading-relaxed">
+            你为什么学计算机？为什么选这个方向？你在想什么？
+          </p>
+          <p class="font-body text-lg text-white/50 leading-relaxed">
+            不写简历式的技能列表，只说你想说的。准备好了随时替换这里。
+          </p>
+          <div class="flex items-center gap-2 mt-4 pt-4 border-t-2 border-dashed border-accent-2/30">
+            <i data-lucide="map-pin" class="w-5 h-5 text-accent-2"></i>
+            <span class="font-heading font-bold text-accent-2 text-sm uppercase tracking-widest">杭州 · 浙江财经大学</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0D0D1A] to-transparent z-10"></div>
+</section>
+
+<!-- ============================================================ -->
+<!--  WORK SECTION  |  ACCENT: YELLOW / ORANGE                     -->
+<!-- ============================================================ -->
+<section id="work" class="hidden-section section-checker-yellow relative py-32 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,230,0,0.05) 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+  <!-- Floating decorations -->
+  <svg class="deco-star top-[10%] left-[12%] w-8 h-8 animate-float-slow" viewBox="0 0 24 24" fill="#FFE600"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <span class="deco-star bottom-[10%] right-[10%] text-5xl animate-float select-none">⚡</span>
+  <div class="deco-star top-[30%] right-[8%] w-14 h-14 rounded-full border-4 border-solid border-accent-3 animate-spin-slow opacity-30"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <!-- Section heading -->
+    <div class="text-center mb-16">
+      <h2 class="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-none text-white ts-triple mb-4">
+        正在做
+      </h2>
+      <p class="font-heading text-base uppercase tracking-widest text-accent-3">What I'm Building</p>
+    </div>
+
+    <!-- Placeholder card with rotation -->
+    <div class="bg-max-muted/70 backdrop-blur-sm border-4 border-solid border-accent-3 rounded-3xl shadow-hard-1 p-10 md:p-14 rotate-1 hover:rotate-2 transition-transform duration-300">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-14 h-14 rounded-full border-4 border-dashed border-accent-4 bg-accent-3/10 flex items-center justify-center shadow-glow">
+          <i data-lucide="sparkles" class="w-7 h-7 text-accent-3"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-black text-2xl text-white ts-single mb-1">当前专注</h3>
+          <p class="font-body text-accent-3/60 text-sm uppercase tracking-widest">CURRENT FOCUS</p>
+        </div>
+      </div>
+      <p class="font-body text-lg text-white/50 leading-relaxed">
+        内容待补充 — 这里会写你当前在做什么、想解决什么问题。
+      </p>
+      <p class="font-body text-lg text-white/50 leading-relaxed mt-3">
+        不是项目列表，而是 "我在探索什么"。
+      </p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0D0D1A] to-transparent z-10"></div>
+</section>
+
+<!-- ============================================================ -->
+<!--  CONTACT SECTION  |  ACCENT: PURPLE                           -->
+<!-- ============================================================ -->
+<section id="contact" class="hidden-section section-mesh-purple relative py-32 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background-image: repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(123,47,255,0.06) 8px, rgba(123,47,255,0.06) 16px);"></div>
+
+  <!-- Floating decorations -->
+  <svg class="deco-star top-[15%] right-[15%] w-12 h-12 animate-float" viewBox="0 0 24 24" fill="#7B2FFF"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <svg class="deco-star bottom-[25%] left-[10%] w-10 h-10 animate-float-rev" viewBox="0 0 24 24" fill="#FF3AF2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+  <span class="deco-star top-[30%] left-[20%] text-4xl animate-wiggle select-none">💌</span>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <!-- Section heading -->
+    <h2 class="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-none text-white ts-triple mb-4">
+      联系我
+    </h2>
+    <p class="font-heading text-base uppercase tracking-widest text-accent-5 mb-12">Get In Touch</p>
+
+    <!-- Email card -->
+    <div class="inline-block bg-max-muted/80 backdrop-blur-sm border-4 border-dashed border-accent-1 rounded-3xl shadow-hard-2 p-10 md:p-14 rotate-1 hover:rotate-2 card-hover">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="w-16 h-16 rounded-full border-4 border-solid border-accent-5 bg-accent-5/10 flex items-center justify-center shadow-glow">
+          <i data-lucide="mail" class="w-8 h-8 text-accent-5"></i>
+        </div>
+      </div>
+      <a href="mailto:3108928384@qq.com" class="block group">
+        <span class="font-heading font-black text-2xl md:text-3xl text-white ts-double group-hover:ts-triple transition-all duration-300 break-all">
+          3108928384@qq.com
+        </span>
+      </a>
+      <p class="font-body text-white/40 text-sm mt-4">点击发送邮件，我通常很快回复</p>
+    </div>
+
+    <!-- Social placeholder -->
+    <div class="mt-16 flex items-center justify-center gap-6">
+      <a href="#" class="w-14 h-14 rounded-full border-4 border-solid border-accent-1 bg-accent-1/10 flex items-center justify-center hover:scale-125 hover:rotate-6 hover:shadow-glow transition-all duration-300">
+        <i data-lucide="github" class="w-6 h-6 text-accent-1"></i>
+      </a>
+      <a href="#" class="w-14 h-14 rounded-full border-4 border-dashed border-accent-2 bg-accent-2/10 flex items-center justify-center hover:scale-125 hover:-rotate-6 hover:shadow-glow transition-all duration-300">
+        <i data-lucide="twitter" class="w-6 h-6 text-accent-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="relative py-10 border-t-4 border-accent-1 bg-max-bg overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(255,58,242,0.04) 1px, transparent 1px); background-size: 16px 16px;"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <p class="font-heading text-sm uppercase tracking-[0.3em] text-white/30">
+      &copy; 2026 项秀泰. Built with Maximalism.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!--  DECORATIVE: Floating corner shapes                           -->
+<!-- ============================================================ -->
+<!-- Bottom left -->
+<div class="fixed bottom-6 left-6 z-30 pointer-events-none opacity-30">
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+    <rect x="2" y="2" width="36" height="36" rx="8" stroke="#FF3AF2" stroke-width="4" stroke-dasharray="6 4"/>
+  </svg>
+</div>
+<!-- Top right -->
+<div class="fixed top-20 right-6 z-30 pointer-events-none opacity-30">
+  <svg width="30" height="30" viewBox="0 0 30 30">
+    <circle cx="15" cy="15" r="13" fill="none" stroke="#00F5D4" stroke-width="4"/>
+  </svg>
+</div>
+
+<!-- Lucide Icons Init + Reveal Logic -->
+<script>
+  lucide.createIcons();
+
+  // Click "来，认识我" to reveal all sections
+  document.getElementById('reveal-btn').addEventListener('click', function() {
+    const sections = document.querySelectorAll('.hidden-section');
+    sections.forEach(function(sec) {
+      sec.classList.remove('hidden-section');
+      sec.classList.add('show-section');
+    });
+    // Smooth scroll to about section
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+</body>
+</html>
